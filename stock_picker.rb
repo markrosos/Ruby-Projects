@@ -15,9 +15,10 @@
 stocks = [17,3,6,9,15,8,6,1,10]
 
 def stock_picker(prices)
-  arr = prices.reverse.combination(2).max_by { |x, y| x - y} # finds best days and returns as array
-  # p arr # returns [15, 3]
-  arr.map { |e| prices.index(e) } # returns [4, 1]
+  # reverses prices array, combines all in pairs of two, then iterates and finds the max value from subtraction (optimal days)
+  arr = prices.reverse.combination(2).max_by { |x, y| x - y} # returns [15, 3]
+  # maps arr with prices, finding index value of days in arr, and reverses them back ([15, 3] => [1, 4])
+  arr.map { |e| prices.index(e) }.reverse # returns [1, 4] 
 end
   
-stock_picker(stocks) # returns [4, 1]
+p stock_picker(stocks) # returns [1, 4]
